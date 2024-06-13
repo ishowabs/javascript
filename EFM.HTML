@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form:not(.btn) {
+        border: solid;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        width: 500px;
+    }
+
+    h1 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    input,
+    select {
+        width: 200px;
+    }
+
+    button {
+        width: 130px;
+        margin: 10px;
+
+    }
+</style>
+
+<body>
+    <form action="">
+        <h1>Commander les TVs</h1>
+        TVs: <select name="" id="" class="type">
+            <option value=""></option>
+            <option value="">SAMSUNG</option>
+            <option value="">LG</option>
+            <option value="">APPLE</option>
+            <option value="">BENQ</option>
+        </select>
+        Quantité: <input type="text" name="" id="Quantité">
+        <button class="btn" onclick="add()">Ajouter aux Panier</button>
+    </form>
+    <h1>Panier De Commandes</h1>
+    <table border="2">
+        <tr>
+            <th>Reference</th>
+            <th>Quantité</th>
+            <th>image</th>
+            <th>Action</th>
+        </tr>
+
+    </table>
+    <script>
+        function add() {
+            let template = `
+    <tr>
+        <td>${Reference}</td>
+        <td>${Quantité}</td>
+        <td>${image}</td>
+        <td>${Action}</td>
+    </tr>
+`;
+            let Reference = document.querySelector(".type").value
+            let Quantité = document.getElementById("Quantité").value
+            let image = document.getElementById("image").value
+            let Action = document.getElementById("Action").value
+
+        }
+    </script>
+</body>
+
+</html>

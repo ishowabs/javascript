@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: rgb(5, 5, 58);
+        color: rgb(86, 112, 135);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    button {
+        background-color: aqua;
+    }
+
+    #btn2 {
+        background-color: gray
+    }
+
+    table,th {
+        border: solid;
+    }
+
+    .border {
+        border: 1px solid red;
+    }
+
+    #ERRid {
+        color: red;
+    }
+</style>
+
+<body>
+
+    <form action="">
+        <h2>Employee CRUD</h2>
+        Employe ID:<input type="text" name="" id="ID">
+        <div id="ERRid"></div>
+        First Name:<input type="text" name="" id="FN">
+        <div id="ERRfn"></div>
+
+        Last Name:<input type="text" name="" id="LN">
+        <div id="ERRln"></div>
+
+        Age:<input type="text" name="" id="AGE">
+        <div id="ERRage"></div>
+
+        Adress:<input type="email" name="" id="ADR" required>
+        <div id="ERRadr"></div>
+
+        Salaire:<input type="text" name="" id="SAL">
+        <div id="ERRsal"></div>
+
+        <div>
+            <button type="button" onclick="add()">submit</button>
+            <button id="btn2" onclick="reset()">reset</button>
+            <button type="button" onclick="error()">Check</button>
+        </div>
+
+
+    </form>
+    <table id="tab">
+        <tr>
+            <th>Employe ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Adress</th>
+            <th>Salaire</th>
+        </tr>
+    </table>
+    <script>
+        function error() {
+            let ID = document.getElementById("ID").value
+            let ID2 = document.getElementById("ID")
+
+            let FN = document.getElementById("FN").value
+            let FN2 = document.getElementById("FN")
+
+            let LN = document.getElementById("LN").value
+            let LN2 = document.getElementById("LN")
+
+            let AGE = document.getElementById("AGE").value
+            let AGE2 = document.getElementById("AGE")
+
+            let ADR = document.getElementById("ADR").value
+            let ADR2 = document.getElementById("ADR")
+
+            let SAL = document.getElementById("SAL").value
+            let SAL2 = document.getElementById("SAL")
+
+            if (isNaN(ID)) {
+                document.getElementById("ERRid").innerHTML = "ID must be a Number"
+                ID2.style.border = '1px solid red'
+            }
+            else {
+                document.getElementById("ERRid").innerHTML = ""
+                ID2.style.border = '1px solid green'
+            }
+
+            if (FN.length < 3 || !isNaN(FN)) {
+                document.getElementById("ERRfn").innerHTML = "First Name should at least characters long"
+            }
+            else {
+                document.getElementById("ERRfn").innerHTML = ""
+                FN2.style.border = '1px solid green'
+            }
+
+            if (LN.length < 3 || !isNaN(LN)) {
+                document.getElementById("ERRln").innerHTML = "last Name should at least characters long"
+            }
+            else {
+                document.getElementById("ERRln").innerHTML = ""
+                FN2.style.border = '1px solid green'
+            }
+
+            if (AGE < 18 || isNaN(AGE)) {
+                document.getElementById("ERRage").innerHTML = "Must be Older than 18"
+            }
+            else {
+                document.getElementById("ERRage").innerHTML = ""
+                AGE2.style.border = '1px solid green'
+            }
+
+            // if (!ADR.checkValidity()) {
+            //     document.getElementById("ERRadr").innerHTML="it should be in this format XXXX-XXX-XXXX"
+
+            // }
+
+            if (SAL < 4000 || isNaN(AGE)) {
+                document.getElementById("ERRsal").innerHTML = "Must be more than 4000"
+            }
+            else {
+                document.getElementById("ERRsal").innerHTML = ""
+                SAL2.style.border = '1px solid green'
+            }
+        }
+        function add() {
+            let tablee = document.getElementById("tab")
+            let ID = document.getElementById("ID").value
+            let FN = document.getElementById("FN").value
+            let LN = document.getElementById("LN").value
+            let AGE = document.getElementById("AGE").value
+            let ADR = document.getElementById("ADR").value
+            let SAL = document.getElementById("SAL").value
+            let template = `
+            <tr>
+                <td>${ID}</td>
+                <td>${FN}</td>
+                <td>${LN}</td>
+                <td>${AGE}</td>
+                <td>${ADR}</td>
+                <td>${SAL}</td>
+
+            </tr>
+            <button type="button" onclick="dell()">Suprimer</button>`
+            
+            tablee.innerHTML += template
+            function  dell() {
+            let template = `
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>`
+        }
+        }
+
+        function reset() {
+            document.getElementById("ID").value = ""
+            document.getElementById("FN").value = ""
+            document.getElementById("LN").value = ""
+            document.getElementById("AGE").value = ""
+            document.getElementById("ADR").value = ""
+            document.getElementById("SAL").value = ""
+        } 
+
+    </script>
+    </body>
+
+</html>
